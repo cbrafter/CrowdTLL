@@ -1,0 +1,28 @@
+<configuration>
+    <input>
+        <net-file value="cross.net.xml"/>
+        <route-files value="cross.rou.xml"/>
+        <additional-files value="cross.det.xml"/>
+    </input>
+    <output>
+        <!--<summary-output value="../../simple/summary010_000.xml"/>-->
+        <!--tripinfo-output value="../../simple/tripinfo010_000.xml"/-->
+        <!--<vehroute-output value="../../simple/vehroute010_000.xml"/-->
+        <!--queue-output value="../../simple/queuedata010_000.xml"/-->
+    </output>
+    <time>
+        <begin value="0"/>
+        <step-length value="0.01"/>
+    </time>
+    <processing>
+        <!--TURN OFF TELEPORTING-->
+        <time-to-teleport value="-1"/>
+    </processing>
+    <report>
+        <no-step-log value="true"/>
+        <error-log value="logfile.txt"/>
+    </report>
+    <traci_server>
+        <remote-port value="8000"/>
+    </traci_server>
+</configuration>

@@ -1,0 +1,17 @@
+<junction id="1" offset="0">
+    <stage id="0" period="30" controlString="GGGggrrrrr"/>
+    <stage id="1" period="20" controlString="rrrGGGGgrr"/>
+    <stage id="2" period="30" controlString="ggrrrrrGGG"/>
+</junction>
+<!--<junction id="1" offset="0">
+    <stage id="0" period="10" controlString="Grrrrrrrrr"/>
+    <stage id="1" period="10" controlString="rGrrrrrrrr"/>
+    <stage id="2" period="10" controlString="rrGrrrrrrr"/>
+    <stage id="3" period="10" controlString="rrrGrrrrrr"/>
+    <stage id="4" period="10" controlString="rrrrGrrrrr"/>
+    <stage id="5" period="10" controlString="rrrrrGrrrr"/>
+    <stage id="6" period="10" controlString="rrrrrrGrrr"/>
+    <stage id="7" period="10" controlString="rrrrrrrGrr"/>
+    <stage id="8" period="10" controlString="rrrrrrrrGr"/>
+    <stage id="9" period="10" controlString="rrrrrrrrrG"/>
+</junction>-->
