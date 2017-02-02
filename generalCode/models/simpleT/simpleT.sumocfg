@@ -5,10 +5,10 @@
         <additional-files value="simpleT.det.xml"/>
     </input>
     <output>
-        <!--<summary-output value="../../simple/summary010_000.xml"/>-->
-        <tripinfo-output value="../../simple/tripinfo010_000.xml"/>
-        <!--<vehroute-output value="../../simple/vehroute010_000.xml"/-->
-        <queue-output value="../../simple/queuedata010_000.xml"/>
+        <!--<summary-output value="../../results/summary010_000.xml"/>-->
+        <tripinfo-output value="../../results/tripinfo010_000.xml"/>
+        <!--<vehroute-output value="../../results/vehroute010_000.xml"/-->
+        <queue-output value="../../results/queuedata010_000.xml"/>
     </output>
     <time>
         <begin value="0"/>
@@ -23,6 +23,6 @@
         <error-log value="logfile.txt"/>
     </report>
     <traci_server>
-        <remote-port value="8000"/>
+        <remote-port value="1351"/>
     </traci_server>
 </configuration>

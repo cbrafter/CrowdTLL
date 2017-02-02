@@ -13,13 +13,13 @@ def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg', ex
     <input>
         <net-file value="{model}.net.xml"/>
         <route-files value="{model}.rou.xml"/>
-        <additional-files value="{model}.det.xml"/>
+        <!--additional-files value="{model}.det.xml"/-->
     </input>
     <output>
         <!--<summary-output value="{expPath}summary{AVR:03d}_{Nrun:03d}.xml"/>-->
-        <tripinfo-output value="{expPath}tripinfo{AVR:03d}_{Nrun:03d}.xml"/>
+        <!--tripinfo-output value="{expPath}tripinfo{AVR:03d}_{Nrun:03d}.xml"/-->
         <!--<vehroute-output value="{expPath}vehroute{AVR:03d}_{Nrun:03d}.xml"/-->
-        <queue-output value="{expPath}queuedata{AVR:03d}_{Nrun:03d}.xml"/>
+        <!--queue-output value="{expPath}queuedata{AVR:03d}_{Nrun:03d}.xml"/-->
     </output>
     <time>
         <begin value="0"/>
