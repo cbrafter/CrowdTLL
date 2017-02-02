@@ -10,10 +10,11 @@ Code to generate a routes file for the "simpleT" SUMO model.
 import random
 
 
-def randCF(AVratio):
+def randCF():
     ''' Assign random car following model based on AVratio
     '''
-    return 'Human' if random.uniform(0, 1) >= AVratio else 'ITSCV'
+    mapping = ["Orange", "Yellow", "Blue", "Purple", "Green"]
+    return mapping[random.randint(0, 4)]
 
 
 def routeStr(vehNr, CFmodel, heading, Tdepart):
@@ -34,13 +35,20 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     routes = open(routeFile, "w")
     # Insert route file header
     print >> routes, """<routes>
-    <vType id="typeHuman" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="1,1,0">
+    <vType id="typeOrange" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="0.832,0.367,0">
     </vType>
 
-    <vType id="typeITSCV" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="1,0,0">
-        <carFollowing-Krauss tau="{AVtau}"/>
-    </vType>""".format(AVtau=AVtau)
+    <vType id="typeYellow" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="0.9375,0.89,0.258">
+    </vType>
 
+    <vType id="typeBlue" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="0,0.445,0.695">
+    </vType>
+
+    <vType id="typePurple" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="0.797,0.473,0.652">
+    </vType>
+
+    <vType id="typeGreen" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="25" guiShape="passenger" color="0,0.617,0.449">
+    </vType>"""
 
     if ('plainRoad' in routeFile):
         print >> routes, """
@@ -88,20 +96,21 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     <route id="westEast"   edges="4:0 0:2" />
     <route id="westSouth"  edges="4:0 0:3" />
     """
-        prob = 0.08
+        prob = 0.05
+        randf = lambda: random.random()/13.0
         routeList = [
-            ["northEast", prob],
-            ["northSouth", prob],
-            ["northWest", prob],
-            ["eastNorth", prob],
-            ["eastSouth", prob],
-            ["eastWest", prob],
-            ["southNorth", prob],
-            ["southEast", prob],
-            ["southWest", prob],
-            ["westNorth", prob],
-            ["westEast", prob],
-            ["westSouth", prob]
+            ["northEast", randf()],
+            ["northSouth", randf()],
+            ["northWest", randf()],
+            ["eastNorth", randf()],
+            ["eastSouth", randf()],
+            ["eastWest", randf()],
+            ["southNorth", randf()],
+            ["southEast", randf()],
+            ["southWest", randf()],
+            ["westNorth", randf()],
+            ["westEast", randf()],
+            ["westSouth", randf()]
         ]
 
     lastVeh = 0
@@ -109,7 +118,7 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     for i in range(N):
         for routeInfo in routeList:
             if random.uniform(0, 1) < routeInfo[1]:
-                print >> routes, routeStr(vehNr, randCF(AVratio), routeInfo[0], i)
+                print >> routes, routeStr(vehNr, randCF(), routeInfo[0], i)
                 vehNr += 1
                 lastVeh = i
 

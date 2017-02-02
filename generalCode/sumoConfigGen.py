@@ -13,6 +13,7 @@ def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg', ex
     <input>
         <net-file value="{model}.net.xml"/>
         <route-files value="{model}.rou.xml"/>
+        <gui-settings-file value="gui-settings.cfg"/>
         <!--additional-files value="{model}.det.xml"/-->
     </input>
     <output>

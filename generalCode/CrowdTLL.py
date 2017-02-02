@@ -1,41 +1,47 @@
 # -*- coding: utf-8 -*-
 """
-@file    simpleTmixedVehicle.py
-@author  Simon Box, Craig Rafter
-@date    29/01/2016
+@file    test.py
+@author  Craig Rafter
+@date    01/02/17
 
 Code to run the "simpleT" SUMO model.
-
+cd .
 """
 import sys, os
 sys.path.insert(0, '../sumoAPI')
-import fixedTimeControl
-import sumoConnect
-import readJunctionData
-import traci
+import sumoConnect, readJunctionData, traci, keyControl
 from routeGen import routeGen
 from sumoConfigGen import sumoConfigGen
 import numpy as np
+from pynput import keyboard
+
+global keyCapture
+keyCapture = None
+
+def on_release(key):
+    global keyCapture 
+    keyCapture = '{0}'.format(key)
 
 # Define road model directory
-modelname = 'simpleT'
+modelname = 'cross'
 model = './models/{}/'.format(modelname)
 # Generate new routes
-N = 5000  # Last time to insert vehicle at
+N = 100  # Last time to insert vehicle at
 stepSize = 0.1
 AVratio = 1
 AVtau = 1.0
-vehNr, lastVeh = routeGen(N, AVratio, AVtau, routeFile=model + modelname + '.rou.xml')
+vehNr, lastVeh = routeGen(N, routeFile=model + modelname + '.rou.xml')
 print(vehNr, lastVeh)
 print('Routes generated')
 
 # Edit the the output filenames in sumoConfig
 configFile = model + modelname + ".sumocfg"
-exportPath = '../../simple/'
+exportPath = '../../results/'
 if not os.path.exists(model+exportPath): # this is relative to script not cfg file
     os.makedirs(model+exportPath)
 
-simport = 8000
+simport = 8813 # TraCI connection port
+# Configre Simulation parameters
 sumoConfigGen(modelname, configFile, exportPath, stepSize, port=simport)
 
 # Connect to model
@@ -43,42 +49,25 @@ connector = sumoConnect.sumoConnect(model + modelname + ".sumocfg", gui=True, po
 connector.launchSumoAndConnect()
 print('Model connected')
 
-# Get junction data
+# Get junction data and configure the controller
 jd = readJunctionData.readJunctionData(model + modelname + ".jcn.xml")
 junctionsList = jd.getJunctionData()
-
-# Add controller models to junctions
-controllerList = []
-for junction in junctionsList:
-    controllerList.append(fixedTimeControl.fixedTimeControl(junction))
-
+TLcontroller = keyControl.keyControl(junctionsList[0])
 print('Junctions and controllers acquired')
 
 # Step simulation while there are vehicles
-vehIDs = []
-juncIDs = traci.trafficlights.getIDList()
-juncPos = [traci.junction.getPosition(juncID) for juncID in juncIDs]
-
+keyLogger = keyboard.Listener(on_press=None, on_release=on_release)
+keyLogger.start()
 while traci.simulation.getMinExpectedNumber():
+    # Step simulation and set controller state 
     traci.simulationStep()
-    for controller in controllerList:
-        controller.process()
-    
-    # if a vehicle within 50m of junction change col to red
-    for vehID in traci.vehicle.getIDList():
-        vehPos = traci.vehicle.getPosition(vehID)
+    # multi process contollers?
+    #print(keyCapture)
+    TLcontroller.process(keyCapture)
 
-        delta = 1e6
-        for junc in juncPos:
-            delta = min(delta, np.linalg.norm(np.diff([vehPos, junc], axis=0)))
-
-        if delta < 50:
-            traci.vehicle.setColor(vehID, (255,0,0,0))
-            traci.vehicle.setSpeed(vehID, 5)
-        else:
-            traci.vehicle.setColor(vehID, (255,255,0,0))
-            traci.vehicle.setSpeed(vehID, -1)
-
-
+# Clean up
+print("Disconnecting Keylogger")    
+keyLogger.stop()
+print("Disconnecting from SUMO")
 connector.disconnect()
-print('DONE')
+print('Simulation Complete')
