@@ -1,0 +1,16 @@
+.DS_Store
+~$*
+*~
+*.pyc
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.bbl
+*.blg
+*.zip
+*.tar.*
+summary*.xml
+queuedata*.xml
+tripinfo*.xml
+vehroute*.xml
