@@ -13,7 +13,7 @@ sys.path.insert(0, '../sumoAPI')
 import sumoConnect
 import readJunctionData
 import traci
-import keyControl
+from keyControl import keyControl
 from routeGen import routeGen
 from sumoConfigGen import sumoConfigGen
 from pynput import keyboard
@@ -32,8 +32,6 @@ model = './models/{}/'.format(modelname)
 # Generate new routes
 N = 100  # Last time to insert vehicle at
 stepSize = 0.1
-AVratio = 1
-AVtau = 1.0
 vehNr, lastVeh = routeGen(N, routeFile=model + modelname + '.rou.xml')
 print(vehNr, lastVeh)
 print('Routes generated')
@@ -58,7 +56,7 @@ print('Model connected')
 # Get junction data and configure the controller
 jd = readJunctionData.readJunctionData(model + modelname + ".jcn.xml")
 junctionsList = jd.getJunctionData()
-TLcontroller = keyControl.keyControl(junctionsList[0])
+TLcontroller = keyControl(junctionsList[0])
 print('Junctions and controllers acquired')
 
 # Step simulation while there are vehicles
@@ -67,7 +65,7 @@ keyLogger.start()
 while traci.simulation.getMinExpectedNumber():
     # Step simulation and set controller state
     traci.simulationStep()
-    # multi process contollers?
+    
     # print(keyCapture)
     TLcontroller.process(keyCapture)
 
