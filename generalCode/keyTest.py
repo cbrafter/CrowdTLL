@@ -8,15 +8,15 @@ def on_press(key):
     global keyCapture
     try:
         keyCapture = 'alphanumeric key {0} pressed'.format(key.char)
-        print(keyCapture)
+        #print(keyCapture)
     except AttributeError:
         keyCapture = 'special key {0}'.format(key)
-        print(keyCapture)
+        #print(keyCapture)
 
 def on_release(key):
     global keyCapture 
     keyCapture = '{0} released'.format(key)
-    print(keyCapture)
+    #print(keyCapture)
 
 # Collect events until released
 # with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
