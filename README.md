@@ -19,7 +19,7 @@ The background overlay was created using [GIMP](https://www.gimp.org/), art cred
 System built and tested on:
 - Ubuntu 16.04 LTS
 - SUMO
-- Python2.7
+- Python 2.7
 
 ## Acknowledgements
 ###Pixel Art:
