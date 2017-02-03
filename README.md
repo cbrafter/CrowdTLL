@@ -10,7 +10,7 @@ The background overlay was created using [GIMP](https://www.gimp.org/), art cred
 
 ## Future work
 - Log user data so that machine learning can be applied to good user scores.
-- Create a leader board so that users at events can see how they compare.
+- Create a leaderboard so that users at events can see how their results compare.
 - Simulation reloads automatically.
 
 ## Screenshot
