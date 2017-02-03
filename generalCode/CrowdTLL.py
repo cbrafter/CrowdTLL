@@ -7,19 +7,23 @@
 Code to run the "simpleT" SUMO model.
 cd .
 """
-import sys, os
+import sys
+import os
 sys.path.insert(0, '../sumoAPI')
-import sumoConnect, readJunctionData, traci, keyControl
+import sumoConnect
+import readJunctionData
+import traci
+import keyControl
 from routeGen import routeGen
 from sumoConfigGen import sumoConfigGen
-import numpy as np
 from pynput import keyboard
 
 global keyCapture
 keyCapture = None
 
+
 def on_release(key):
-    global keyCapture 
+    global keyCapture
     keyCapture = '{0}'.format(key)
 
 # Define road model directory
@@ -34,18 +38,20 @@ vehNr, lastVeh = routeGen(N, routeFile=model + modelname + '.rou.xml')
 print(vehNr, lastVeh)
 print('Routes generated')
 
-# Edit the the output filenames in sumoConfig
+# Edit the the output filenames in sumoConfig
 configFile = model + modelname + ".sumocfg"
 exportPath = '../../results/'
-if not os.path.exists(model+exportPath): # this is relative to script not cfg file
+# this is relative to script not cfg file
+if not os.path.exists(model+exportPath):
     os.makedirs(model+exportPath)
 
-simport = 8813 # TraCI connection port
+simport = 8813  # TraCI connection port
 # Configre Simulation parameters
 sumoConfigGen(modelname, configFile, exportPath, stepSize, port=simport)
 
 # Connect to model
-connector = sumoConnect.sumoConnect(model + modelname + ".sumocfg", gui=True, port=simport)
+connector = sumoConnect.sumoConnect(model + modelname + ".sumocfg",
+                                    gui=True, port=simport)
 connector.launchSumoAndConnect()
 print('Model connected')
 
@@ -59,14 +65,14 @@ print('Junctions and controllers acquired')
 keyLogger = keyboard.Listener(on_press=None, on_release=on_release)
 keyLogger.start()
 while traci.simulation.getMinExpectedNumber():
-    # Step simulation and set controller state 
+    # Step simulation and set controller state
     traci.simulationStep()
     # multi process contollers?
-    #print(keyCapture)
+    # print(keyCapture)
     TLcontroller.process(keyCapture)
 
 # Clean up
-print("Disconnecting Keylogger")    
+print("Disconnecting Keylogger")
 keyLogger.stop()
 print("Disconnecting from SUMO")
 connector.disconnect()

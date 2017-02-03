@@ -7,7 +7,10 @@ Code to generate a config file for a SUMO model.
 
 """
 
-def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg', exportPath='../', AVratio=0, stepSize=0.01, run=0, port=8813):
+
+def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg',
+                  exportPath='../', AVratio=0, stepSize=0.01,
+                  run=0, port=8813):
     configXML = open(configFile, 'w')
     print >> configXML, """<configuration>
     <input>
@@ -36,7 +39,8 @@ def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg', ex
     </report>
     <traci_server>
         <remote-port value="{SUMOport}"/>
-    </traci_server>""".format(model=modelname, expPath=exportPath, 
-        AVR=int(AVratio*100), stepSz=stepSize, Nrun=run, SUMOport=port)
+    </traci_server>""".format(model=modelname, expPath=exportPath,
+                              AVR=int(AVratio*100), stepSz=stepSize,
+                              Nrun=run, SUMOport=port)
     print >> configXML, "</configuration>"
     configXML.close()

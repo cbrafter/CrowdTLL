@@ -27,7 +27,7 @@ def routeStr(vehNr, CFmodel, heading, Tdepart):
     return '    <' + vID + vtype + route + depart + '/>'
 
 
-def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'): 
+def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     assert 0.0 <= AVratio <= 1.0, "Error: AVratio not between 0,1"
     assert '.rou.xml' == routeFile[-8:], "Error: Wrong route file extension"
 
@@ -57,10 +57,9 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     """
         # Probabilities of car on trajectory
         routeList = [
-            ['eastWest', 1.0/2.0], 
+            ['eastWest', 1.0/2.0],
             ['westEast', 1.0/2.0]
         ]
-
 
     if ('simpleT' in routeFile):
         print >> routes, """
@@ -73,11 +72,11 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     """
         # Probabilities of car on trajectory
         routeList = [
-            ['eastSouth', 1.0/30.0], 
-            ['eastWest', 1.0/10.0], 
-            ['westSouth', 1.0/30.0], 
-            ['westEast', 1.0/10.0], 
-            ['southEast', 1.0/50.0], 
+            ['eastSouth', 1.0/30.0],
+            ['eastWest', 1.0/10.0],
+            ['westSouth', 1.0/30.0],
+            ['westEast', 1.0/10.0],
+            ['southEast', 1.0/50.0],
             ['southWest', 1.0/50.0]
         ]
 
@@ -96,8 +95,11 @@ def routeGen(N, AVratio=0, AVtau=0.1, routeFile='./simpleT.rou.xml'):
     <route id="westEast"   edges="4:0 0:2" />
     <route id="westSouth"  edges="4:0 0:3" />
     """
-        prob = 0.05
-        randf = lambda: random.random()/13.0
+        # prob = 0.05
+
+        def randf():
+            return random.random()/13.0
+
         routeList = [
             ["northEast", randf()],
             ["northSouth", randf()],
