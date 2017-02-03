@@ -17,7 +17,7 @@ Given the intention of displaying this to a wide audience, the vehicels are colo
 - Simulation reloads automatically.
 
 ## Screenshot
-![Screenshot](images/screenshot.png?raw=true "A screenschot of CrowdTLL in action.")
+![alt text](./images/screenshot.png?raw=true "A screenschot of CrowdTLL in action.")
 
 ## Requirements
 System built and tested on:
