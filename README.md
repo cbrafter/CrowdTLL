@@ -18,9 +18,10 @@ The background overlay was created using [GIMP](https://www.gimp.org/), art cred
 
 ## Requirements
 System built and tested on:
-- Ubuntu 16.04 LTS
-- SUMO
+- Ubuntu 16.04.1 LTS
+- SUMO 0.28.0
 - Python 2.7
+- Pynput 1.2
 
 ## Acknowledgements
 ###Pixel Art:
