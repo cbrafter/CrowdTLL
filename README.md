@@ -7,7 +7,7 @@ A simple crossroads simulated using the [TraCI](http://sumo.dlr.de/wiki/TraCI) [
 
 The background overlay was created using [GIMP](https://www.gimp.org/), art credits below. Given the intention of displaying this to a wide audience, the vehicles are colored in a color blind accessible color palette.
 
-## Future work:
+## Future work
 - Log user data so that machine learning can be applied to good user scores.
 - Create a leader board so that users at events can see how they compare.
 - Simulation reloads automatically.
