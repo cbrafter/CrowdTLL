@@ -1,7 +1,7 @@
 # CrowdTLL
 Crowd sourced traffic light control for outreach events.
 
-*Please acknowledge the author in any derivative works.*
+*Please acknowledge the author and other relevant contributors in any derivative works.*
 
 ## Description
 A simple crossroads simulated using the [TraCI](http://sumo.dlr.de/wiki/TraCI) [Python](https://www.python.org/) API to the [SUMO](http://www.sumo.dlr.de/) microsimulator. The program maps the keyboard arrow keys to control the direction of the traffic flow using the [Pynput](https://pypi.python.org/pypi/pynput) Python library. The *sumoAPI* included is from the [Traffic Control Test Set](http://tctester.sourceforge.net/).
