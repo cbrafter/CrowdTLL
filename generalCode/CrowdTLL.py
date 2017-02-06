@@ -23,6 +23,8 @@ keyCapture = None
 
 
 def on_release(key):
+    """Pynput thread trigger function that stores the value of the last released
+    key press"""
     global keyCapture
     keyCapture = '{0}'.format(key)
 
@@ -32,9 +34,9 @@ model = './models/{}/'.format(modelname)
 # Generate new routes
 N = 100  # Last time to insert vehicle at
 stepSize = 0.1
-vehNr, lastVeh = routeGen(N, routeFile=model + modelname + '.rou.xml')
-print(vehNr, lastVeh)
-print('Routes generated')
+#vehNr, lastVeh = routeGen(N, routeFile=model + modelname + '.rou.xml')
+#print(vehNr, lastVeh)
+#print('Routes generated')
 
 # Edit the the output filenames in sumoConfig
 configFile = model + modelname + ".sumocfg"
