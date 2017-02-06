@@ -2,7 +2,9 @@
 Crowd sourced traffic light control for outreach events.
 
 *Please acknowledge the author and other relevant contributors in any derivative works.*
+
 *Copyright 2017: Craig B. Rafter*
+
 *Distributed under GNU GPL v3.0*
 
 ## Description
