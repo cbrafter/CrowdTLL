@@ -4,15 +4,18 @@
 @author  Craig Rafter
 @date    01/02/17
 
-Code to run the "simpleT" SUMO model.
-cd .
+Code to run the "CrowdTLL" SUMO model.
 """
 import sys
 import os
+import psutil
 sys.path.insert(0, '../sumoAPI')
 import sumoConnect
 import readJunctionData
 import traci
+import updateResults
+import messageBox as mbox
+from time import strftime
 from keyControl import keyControl
 from routeGen import routeGen
 from sumoConfigGen import sumoConfigGen
@@ -26,7 +29,7 @@ def on_release(key):
     """Pynput thread trigger function that stores the value of the last released
     key press"""
     global keyCapture
-    keyCapture = '{0}'.format(key)
+    keyCapture = '{}'.format(key)
 
 # Define road model directory
 modelname = 'cross'
@@ -50,30 +53,50 @@ simport = 8813  # TraCI connection port
 sumoConfigGen(modelname, configFile, exportPath, stepSize, port=simport)
 
 # Connect to model
-connector = sumoConnect.sumoConnect(model + modelname + ".sumocfg",
-                                    gui=True, port=simport)
-connector.launchSumoAndConnect()
-print('Model connected')
+while True:
+    connector = sumoConnect.sumoConnect(model + modelname + ".sumocfg",
+                                        gui=True, port=simport)
+    connector.launchSumoAndConnect()
+    print('Model connected')
 
-# Get junction data and configure the controller
-jd = readJunctionData.readJunctionData(model + modelname + ".jcn.xml")
-junctionsList = jd.getJunctionData()
-TLcontroller = keyControl(junctionsList[0])
-print('Junctions and controllers acquired')
+    # Get junction data and configure the controller
+    jd = readJunctionData.readJunctionData(model + modelname + ".jcn.xml")
+    junctionsList = jd.getJunctionData()
+    TLcontroller = keyControl(junctionsList[0])
+    print('Junctions and controllers acquired')
 
-# Step simulation while there are vehicles
-keyLogger = keyboard.Listener(on_press=None, on_release=on_release)
-keyLogger.start()
-while traci.simulation.getMinExpectedNumber():
-    # Step simulation and set controller state
-    traci.simulationStep()
-    
-    # print(keyCapture)
-    TLcontroller.process(keyCapture)
+    # Step simulation while there are vehicles
+    keyLogger = keyboard.Listener(on_press=None, on_release=on_release)
+    keyLogger.start()
+    initial = mbox.mbox('Get ready to start!\nPlease enter your INITIALS:', entry=True)
 
-# Clean up
-print("Disconnecting Keylogger")
-keyLogger.stop()
-print("Disconnecting from SUMO")
-connector.disconnect()
-print('Simulation Complete')
+    print traci.gui.setBoundary('View #0', -132.241238793806, 2.952380952380963,
+        332.241238793806, 201.04761904761904)
+    while traci.simulation.getMinExpectedNumber():
+        # Step simulation and set controller state
+        #print traci.gui.getBoundary('View #0')
+        traci.simulationStep()
+        
+        # print(keyCapture)
+        TLcontroller.process(keyCapture)
+
+    # Log run data
+    endTime = traci.simulation.getCurrentTime()*1e-3
+    fname = './data/' + strftime('%Y_%m_%d_%H')
+    print endTime
+    #updateResults.updateResults(fname, initial, endTime)
+
+    # Clean up
+    print("Disconnecting Keylogger")
+    keyLogger.stop()
+    print("Disconnecting from SUMO")
+    connector.disconnect()
+    print('Simulation Complete')
+
+    # Close the sumo-gui
+    try:
+        for process in psutil.process_iter():
+            if process.name() == 'sumo-gui':
+                process.terminate()
+    except:
+        pass
