@@ -3,6 +3,9 @@ import pandas as pd
 defaultdata = {'INITIALS':['CBR','LS','JRE'], 
 			   'TIME':[191.6, 186.3, 185.9]}
 
+defaultdata = {'INITIALS':['COMP'],
+			   'TIME':[175.12]}
+
 df = pd.DataFrame.from_dict(defaultdata)
 #dfSorted = df.sort_index(ascending=False)
 dfSort = df.groupby(['INITIALS']).min()

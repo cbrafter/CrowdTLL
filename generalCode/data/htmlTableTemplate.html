@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--<meta http-equiv="refresh" content="30">-->
 <style>
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     border-collapse: collapse;
-    width: 50%;
+    width: 75%;
 }
 
 #customers td, #customers th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 4px;
     text-align: center;
 }
 
@@ -20,34 +21,93 @@
 #customers tr:hover {background-color: #c2deed;}
 
 #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
     background-color: #005A87;
     color: white;
 }
+
+#parent {
+  display: flex;
+}
+#narrow {
+  width: 50%;
+  margin-left: 3%;
+  /*background: lightblue;*/
+  /* Just so it's visible */
+}
+#wide {
+  flex: 1;
+  margin-right: 3%;
+  /* Grow to rest of container */
+  /*background: lightgreen;*/
+  /* Just so it's visible */
+}
+
 </style>
 </head>
 <body>
-<table id="customers" align="center">
-<caption>Traffic Light Control Leaderboard</caption>
-  <tr>
-    <th>Initials</th>
-    <th>Time</th>
-  </tr>
-  <tr>
-    <td>CBR</td>
-    <td>125</td>
-  </tr>
-  <tr>
-    <td>JRE</td>
-    <td>123</td>
-  </tr>
-  <tr>
-    <td>LH</td>
-    <td>120</td>
-  </tr>
-</table>
+<div id="parent">
+  <div id="wide">
+  <table id="customers" align="right">
+    <caption>Traffic Light Control Leaderboard</caption>
+    <tr>
+      <th>Initials</th>
+      <th>Time</th>
+    </tr>
+    <tr>
+      <td>CBR</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>JRE</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <td>LH</td>
+      <td>120</td>
+    </tr>
+        <tr>
+      <td>CBR</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>JRE</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <td>LH</td>
+      <td>120</td>
+    </tr>
+        <tr>
+      <td>CBR</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>JRE</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <td>LH</td>
+      <td>120</td>
+    </tr>
+        <tr>
+      <td>LH</td>
+      <td>120</td>
+    </tr>
+  </table>
 
+  <div align="right">
+    <iframe width="75%" height="350" src="https://www.youtube.com/embed/Tamzt3m7BaI?autoplay=1&t=13s&loop=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div id="narrow" align="left">
+  <a class="twitter-timeline" data-width="680" data-height="800" data-theme="light" href="https://twitter.com/sotonTraffJam">Tweets by cbrafter</a> 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
 </body>
 </html>
