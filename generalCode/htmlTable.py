@@ -70,8 +70,10 @@ def htmlTable(data, filename):
     <td>{}</td>
   </tr>
   """.format(data.loc[i][0], data.loc[i][1])
-    header += """  <div align="right">
-    <iframe width="75%" height="350" src="https://www.youtube.com/embed/o_phwO31nIk?autoplay=1&loop=1&playlist=o_phwO31nIk" frameborder="0" allowfullscreen></iframe>
+    header += """</table>
+
+  <div align="right">
+    <iframe width="75%" height="350" src="https://www.youtube.com/embed/qnFo80pns54?autoplay=1&loop=1&playlist=qnFo80pns54" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
 

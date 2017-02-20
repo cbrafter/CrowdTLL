@@ -33,17 +33,18 @@ def updateResults(filename, initial, timeScore):
     """ Filename (tihout extension). open the filename.hdf and store results.
     then write the results to a HTML file
     """
-    hdfFile = './data/'+filename+'.hdf'
+    hdfFile = filename+'.hdf'
     if not os.path.exists(hdfFile):
         copyfile('./data/default.hdf', hdfFile)
-    data = pd.read_hdf(hdfFile)
+    data = pd.read_hdf(hdfFile).reset_index()
     # add new entry to data frame
     data.loc[len(data)] = [initial, timeScore]
-    # rank user scores
+    # rank best unique user scores
     sortData = data.groupby(['INITIALS']).min().head(10)
     # save new data
     sortData.to_hdf(hdfFile, 'test', mode='w')
 
+    sortData = sortData.sort_values(by='TIME',ascending=True).reset_index()
     htmlTable(sortData, filename+'.html')
 
 
@@ -122,5 +123,5 @@ def parseTweets(api):
     # Pandas Stuff
     df = pd.DataFrame.from_dict(results)
     # Top 10 results, only best time for each ID counted
-    dfSort = df.groupby(['UID']).min().head(10)
-    htmlTable(dfSort, 'results.html')
+    dfSort = df.groupby('UID').min().head(10).sort_values(by='TIME',ascending=True).reset_index()
+    htmlTable(dfSort, './data/results.html')

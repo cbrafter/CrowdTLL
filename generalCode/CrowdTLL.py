@@ -102,9 +102,9 @@ while True:
     elif display:
         # if the file for the current hour doesn't exist then open in
         # web broswer after creation
-        if not os.path.exists(fname):
+        if not os.path.exists(fname + '.html'):
             updateResults.updateResults(fname, initial, endTime)
-            updateResults.openHTML_Browser(fname)
+            updateResults.openHTML_Browser(fname + '.html')
         else:
             updateResults.updateResults(fname, initial, endTime)
     else:

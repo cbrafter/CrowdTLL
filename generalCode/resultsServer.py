@@ -14,7 +14,7 @@ api = twitAuth.getAPI()
 
 # Generate default leaderboard and open webpage
 updateResults.parseTweets(api)
-updateResults.openHTML_Browser('results.html')
+updateResults.openHTML_Browser('./data/results.html')
 
 while True:
     updateResults.parseTweets(api)
