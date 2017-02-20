@@ -40,7 +40,7 @@ def updateResults(filename, initial, timeScore):
     # add new entry to data frame
     data.loc[len(data)] = [initial, timeScore]
     # rank user scores
-    sortData = data.groupby(['INITIALS']).min()
+    sortData = data.groupby(['INITIALS']).min().head(10)
     # save new data
     sortData.to_hdf(hdfFile, 'test', mode='w')
 
