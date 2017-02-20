@@ -86,10 +86,9 @@ while True:
     # Step simulation while there are vehicles
     while traci.simulation.getMinExpectedNumber():
         # Step simulation and set controller state
-        # print traci.gui.getBoundary('View #0')
         traci.simulationStep()
 
-        # print(keyCapture)
+        # Update TLL based on key pressed
         TLcontroller.process(keyCapture)
 
     # Log run data

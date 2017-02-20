@@ -15,3 +15,4 @@ queuedata*.xml
 tripinfo*.xml
 vehroute*.xml
 twitAuth.*
+/generalCode/figures/*
