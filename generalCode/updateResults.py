@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+@file    CrowdTLL.py
+@author  Craig Rafter
+@date    01/02/17
+
+Functions for posting and storing results.
+"""
 import pandas as pd
 import os
 from shutil import copyfile
@@ -5,18 +13,26 @@ from htmlTable import htmlTable
 import time
 import profanity.profanity as profanity
 import webbrowser
+
+# Load the list of bad words and add to profanity filter
 with open('badWordsShort.txt', 'r') as f:
     badWords = [x.strip() for x in f.readlines()]
-    # profanity.load_words(badWords)
+    profanity.load_words(badWords)
 
 
 def openHTML_Browser(filename):
+    """ Open the HTML filename given in a new browser tab 
+    """
+    assert filename[-4:] == 'html'
     path = os.path.abspath(filename)
     url = 'file://' + path
     webbrowser.open(url)
 
 
 def updateResults(filename, initial, timeScore):
+    """ Filename (tihout extension). open the filename.hdf and store results.
+    then write the results to a HTML file
+    """
     hdfFile = './data/'+filename+'.hdf'
     if not os.path.exists(hdfFile):
         copyfile('./data/default.hdf', hdfFile)
@@ -32,7 +48,11 @@ def updateResults(filename, initial, timeScore):
 
 
 def tweetInfo(api, initial, timeScore):
+    """ Tweet the user given initial and timescore. inintals get 
+    parsed for profanity
+    """
     status = '{} cleared the junction in {}s!'
+    # Check initial not empty
     if len(initial) == 0:
         name = 'NONE'
         api.PostUpdate(status.format(name, timeScore))
@@ -41,7 +61,7 @@ def tweetInfo(api, initial, timeScore):
     name = initial[:4].lower()  # Use only 4 letter max words
     name = ''.join([c for c in name if c.isalnum()])
 
-    # All chars were symbols
+    # All chars were symbols case
     if len(name) == 0:
         initial = 'NONE'
         api.PostUpdate(status.format(name, timeScore))
@@ -63,12 +83,16 @@ def tweetInfo(api, initial, timeScore):
 
 
 def secondsSinceTweet(tweet):
+    # Get time since a given tweet
     return time.time() - tweet.created_at_in_seconds
 
 
 def parseTweets(api):
+    """ Parse the twitter feed for results messages 
+    """
     userName = api.VerifyCredentials().screen_name
     timeline = api.GetUserTimeline(screen_name=userName, count=110)
+    # Default data
     results = {'UID': ['COMP', 'JIM', 'UOS'], 'TIME': [175.12, 250.0, 300.0]}
     oneHourInSeconds = 3600
     validTweets = []
@@ -96,6 +120,7 @@ def parseTweets(api):
         results['TIME'].append(timeScore)
 
     # Pandas Stuff
-    df = pd.from_dict(results)
-    dfSort = df.groupby(['INITIALS']).min()
+    df = pd.DataFrame.from_dict(results)
+    # Top 10 results, only best time for each ID counted
+    dfSort = df.groupby(['UID']).min().head(10)
     htmlTable(dfSort, 'results.html')

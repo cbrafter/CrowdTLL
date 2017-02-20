@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+@file    CrowdTLL.py
+@author  Craig Rafter
+@date    01/02/17
+
+Code to run and display results from the twitter feed
+"""
 import twitAuth
 import updateResults
 import time

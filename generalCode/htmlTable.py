@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+@file    CrowdTLL.py
+@author  Craig Rafter
+@date    01/02/17
+
+Code to render the results web page
+"""
+
+
 def htmlTable(data, filename):
     f = open(filename, 'w')
     header = """<!DOCTYPE html>

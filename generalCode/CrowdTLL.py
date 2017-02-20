@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-@file    test.py
+@file    CrowdTLL.py
 @author  Craig Rafter
 @date    01/02/17
 
-Code to run the "CrowdTLL" SUMO model.
+Code to run the "CrowdTLL" SUMO game.
 """
 import sys
 import os
@@ -75,8 +75,13 @@ while True:
     # Begin Gathering keypresses to control the traffic lights
     keyLogger = keyboard.Listener(on_press=None, on_release=on_release)
     keyLogger.start()
-    initial = mbox.mbox('Get ready to start!\nPlease enter your INITIALS:',
-                        entry=True)
+
+    # Get user initial 
+    if online or display:
+        initial = mbox.mbox('Get ready to start!\nPlease enter your INITIALS:',
+                            entry=True)
+    else:
+        mbox.mbox('Get ready to start!')
 
     # Step simulation while there are vehicles
     while traci.simulation.getMinExpectedNumber():
