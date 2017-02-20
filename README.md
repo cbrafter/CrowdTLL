@@ -1,4 +1,4 @@
-# CrowdTLL
+# Junction Jam
 A Crowd sourced traffic light control for outreach events.
 
 *Please acknowledge the author and other relevant contributors in any derivative works.*   
@@ -8,12 +8,13 @@ A Crowd sourced traffic light control for outreach events.
 ## Description
 A simple crossroads simulated using the [TraCI](http://sumo.dlr.de/wiki/TraCI) [Python](https://www.python.org/) API to the [SUMO](http://www.sumo.dlr.de/) microsimulator. The program maps the keyboard arrow keys to control the direction of the traffic flow using the [Pynput](https://pypi.python.org/pypi/pynput) Python library. The *sumoAPI* included is from the [Traffic Control Test Set](http://tctester.sourceforge.net/).
 
+The simulation is capable of storing the results localy and diplaying them on a web page. Or posting the results online to [Twitter](https://twitter.com/) using the Python [Twitter API](https://github.com/bear/python-twitter). The user defined names are limited to 4 characters and filtered for profanity. A separate server scipt is provided to update the results from the twitter feed periodically.  
+
 The background overlay was created using [GIMP](https://www.gimp.org/), art credits below. Given the intention of displaying this to a wide audience, the vehicles are colored in a color blind accessible color palette.
 
 ## Future work
 - Log user data so that machine learning can be applied to good user scores.
-- Create a leaderboard so that users at events can see how their results compare.
-- Simulation reloads automatically.
+- Make a two-player junction for cooperative play.
 
 ## Screenshot
 ![alt text](./images/screenshot_CTLL.png "A screenschot of CrowdTLL in action.")
@@ -24,6 +25,8 @@ System built and tested on:
 - SUMO 0.28.0
 - Python 2.7
 - Pynput 1.2
+- Python Profanity 1.1
+- Python Twitter 3.2.1
 
 ## Acknowledgements
 ###Pixel Art:
