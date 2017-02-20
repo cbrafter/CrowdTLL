@@ -1,5 +1,7 @@
 # Junction Jam
-Jam at the junction - can you beat the queues and get the cars past the traffic lights faster than everyone else? Interactive traffic simulation for all ages. A Crowd sourced traffic light control game for outreach events.
+>Jam at the junction - can you beat the queues and get the cars past the traffic lights faster than everyone else? Interactive traffic simulation for all ages. 
+
+A crowd sourced traffic light control game for outreach events.
 
 *Please acknowledge the author and other relevant contributors in any derivative works.*   
 *Copyright 2017: Craig B. Rafter*   
