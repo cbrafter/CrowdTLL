@@ -10,7 +10,7 @@ An open source traffic light control game for outreach events with potential for
 ## Description
 A simple crossroads simulated using the [TraCI](http://sumo.dlr.de/wiki/TraCI) [Python](https://www.python.org/) API to the [SUMO](http://www.sumo.dlr.de/) microsimulator. The program maps the keyboard arrow keys to control the direction of the traffic flow using the [Pynput](https://pypi.python.org/pypi/pynput) Python library. The *sumoAPI* included is from the [Traffic Control Test Set](http://tctester.sourceforge.net/).
 
-The simulation is capable of storing the results localy and diplaying them on a web page. Or posting the results online to [Twitter](https://twitter.com/) using the Python [Twitter API](https://github.com/bear/python-twitter). The user defined names are limited to 4 characters and filtered for profanity. A separate server scipt is provided to update the results from the twitter feed periodically.  
+The simulation is capable of storing the results localy and diplaying them on a web page. Or posting the results online to [Twitter](https://twitter.com/) using the Python [Twitter API](https://github.com/bear/python-twitter). The user defined names are limited to 4 characters and filtered for profanity. A separate server scipt is provided to update the results from the twitter feed periodically. Users will need to provide their own twitter API crednetials in `twitAuth.py`
 
 The background overlay was created using [GIMP](https://www.gimp.org/), art credits below. Given the intention of displaying this to a wide audience, the vehicles are colored in a color blind accessible color palette.
 
