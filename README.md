@@ -1,7 +1,7 @@
 # Junction Jam
 Jam at the junction - can you beat the queues and get the cars past the traffic lights faster than everyone else? Interactive traffic simulation for all ages.
 
-An open source traffic light control game for outreach events with potential for crowd sourcing data. See it in action on [YouTube](https://youtu.be/o_phwO31nIk)
+An open source traffic light control game for engagement events with potential for crowd sourcing data. See it in action on [YouTube](https://youtu.be/o_phwO31nIk)
 
 *Please acknowledge the author and other relevant contributors in any derivative works. Not for commercial use.*   
 *Copyright 2017: Craig B. Rafter*   
