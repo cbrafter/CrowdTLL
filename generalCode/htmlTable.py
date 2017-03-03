@@ -15,6 +15,12 @@ def htmlTable(data, filename):
 <head>
 <meta http-equiv="refresh" content="30">
 <style>
+#header {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 45px;
+}
+
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 25px;
@@ -53,8 +59,10 @@ def htmlTable(data, filename):
 }
 
 </style>
+<title>HTML Reference</title>
 </head>
 <body>
+<h1 id="header">Junction Jam</h1>
 <div id="parent">
   <div id="wide">
   <table id="customers" align="right">
