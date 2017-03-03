@@ -24,7 +24,7 @@ The background overlay was created using [GIMP](https://www.gimp.org/), art cred
 ## Requirements
 System built and tested on:
 - Ubuntu 16.04.1 LTS
-- SUMO 0.28.0
+- SUMO 0.29.0
 - Python 2.7
 - Pynput 1.2
 - Python Profanity 1.1
