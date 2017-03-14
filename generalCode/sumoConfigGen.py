@@ -17,7 +17,7 @@ def sumoConfigGen(modelname='simpleT', configFile='./models/simpleT.sumocfg',
         <net-file value="{model}.net.xml"/>
         <route-files value="{model}.rou.xml"/>
         <gui-settings-file value="gui-settings.cfg"/>
-        <game value="0"/>
+        <game value="1"/>
         <start value="1"/>
         <!--additional-files value="{model}.det.xml"/-->
     </input>

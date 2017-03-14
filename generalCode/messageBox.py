@@ -71,7 +71,7 @@ class MessageBox(object):
         # roughly center the box on screen
         # for accuracy see: http://stackoverflow.com/a/10018670/1217270
         root.update_idletasks()
-        xp = (root.winfo_screenwidth() // 4) - (root.winfo_width() // 4)
+        xp = (root.winfo_screenwidth() // 2) - (root.winfo_width() // 2)
         yp = (root.winfo_screenheight() // 2) - (root.winfo_height() // 2)
         geom = (root.winfo_width(), root.winfo_height(), xp, yp)
         root.geometry('{0}x{1}+{2}+{3}'.format(*geom))
