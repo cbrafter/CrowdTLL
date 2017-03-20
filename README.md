@@ -31,7 +31,7 @@ System built and tested on:
 - Python Twitter 3.2.1
 
 ## Acknowledgements
-###Pixel Art:
+### Pixel Art:
 **Trees:**
 - René Alejandro Hernández [HERE](https://design.tutsplus.com/tutorials/how-to-create-an-isometric-pixel-art-tree-in-adobe-photoshop--cms-23606)
 - User "shimauma" [HERE](https://forum.unity3d.com/threads/pixel-art-how-to-keep-original-sprite-size-in-game.241281/)
