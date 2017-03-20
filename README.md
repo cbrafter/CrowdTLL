@@ -4,7 +4,7 @@ Jam at the junction - can you beat the queues and get the cars past the traffic 
 An open source traffic light control game for engagement events with potential for crowd sourcing data. See it in action on [YouTube](https://youtu.be/o_phwO31nIk)
 
 *Please acknowledge the author and other relevant contributors in any derivative works. Not for commercial use.*   
-*Copyright 2017: Craig B. Rafter*   
+*Copyright 2017: [Craig B. Rafter](https://github.com/cbrafter)*   
 *Distributed under GNU GPL-3.0*   
 
 ## Description
