@@ -74,8 +74,10 @@ def tweetInfo(api, initial, timeScore):
 
     # profanity filter
     if profanity.contains_profanity(name):
-        name = initial[:4].upper()
-        name = name[0] + '***'
+        # name = initial[:4].upper()
+        # name = name[0] + '***'
+        name = name[0].upper() + '***'
+
     else:
         name = initial[:4].upper()
 
@@ -94,7 +96,7 @@ def parseTweets(api):
     userName = api.VerifyCredentials().screen_name
     timeline = api.GetUserTimeline(screen_name=userName, count=110)
     # Default data
-    results = {'UID': ['COMP', 'JIM', 'UOS'], 'TIME': [175.12, 250.0, 300.0]}
+    results = {'UID': ['COMP', 'JIM', 'UOS'], 'TIME': [177.12, 250.0, 300.0]}
     oneHourInSeconds = 3600
     validTweets = []
 
@@ -123,5 +125,5 @@ def parseTweets(api):
     # Pandas Stuff
     df = pd.DataFrame.from_dict(results)
     # Top 10 results, only best time for each ID counted
-    dfSort = df.groupby('UID').min().head(10).sort_values(by='TIME',ascending=True).reset_index()
+    dfSort = df.groupby('UID').min().sort_values(by='TIME', ascending=True).head(10).reset_index()
     htmlTable(dfSort, './data/results.html')
