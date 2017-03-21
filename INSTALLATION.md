@@ -6,7 +6,7 @@ The installation process is somewhat technical but I will try to provide the ste
 The software is built to work on Ubuntu 16.04, if this is not your operating system
 then I suggest you make a virtual machine using VirtualBox + guest additions ([EXTERNAL GUIDE](http://www.psychocats.net/ubuntu/virtualbox)).
 
-I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB video memory.
+I recommend making a VM specified with at least 2 logical CPUs, 2 GB RAM, and 64 MB video memory.
 
 ## Installing SUMO
 The current version of SUMO is v0.29, however the GUI for this version is still buggy.
