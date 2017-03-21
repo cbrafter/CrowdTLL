@@ -12,7 +12,7 @@ I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB vide
 The current version of SUMO is v0.29, however the GUI for this version is still buggy.
 SUMO v0.28 is what we use here. To install SUMO v0.28 open a terminal in Ubuntu and
 run the following commands. 
-```zsh
+```{r, engine='bash', sum_install}
 sudo add-apt-repository ppa:sumo/stable
 sudo apt-get update
 sudo apt-get install sumo sumo-tools sumo-doc
@@ -21,19 +21,19 @@ sudo apt-get install sumo sumo-tools sumo-doc
 ## Additional software
 Run the following commands in your terminal to install some supporting software libraries:
 ```
-sudo apt install -y git python-pip python-xlib python-tk
+sudo apt install -y git python-pip python-tk python-xlib
 ```
 
 ## Python Setup
 Run the following commands in your terminal to install some supporting Python libraries:
 ```
-sudo -H pip install pandas psutil pynput profanity
+sudo -H pip install pandas psutil pynput profanity python-twitter
 ```
 
 ## Getting Junction Jam
 Run the following command in your terminal while connected to the internet:
 ```
-commands
+git clone https://github.com/ngcm/JunctionJam
 ```
 Run the following command to navigate to the Junction Jam software folder:
 ```
