@@ -59,4 +59,4 @@ python junctionJam.py
 
 ## Problems
 If you have issues installing the software please feel free to contact me. My details are on my 
-[Github profile](https://github.com/cbrafter), please put the email subject as **Junction Jam: *subject***`.
+[Github profile](https://github.com/cbrafter), please put the email subject as **Junction Jam: *subject***.
