@@ -12,7 +12,7 @@ I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB vide
 The current version of SUMO is v0.29, however the GUI for this version is still buggy.
 SUMO v0.28 is what we use here. To install SUMO v0.28 open a terminal in Ubuntu and
 run the following commands. 
-```bash
+```zsh
 sudo add-apt-repository ppa:sumo/stable
 sudo apt-get update
 sudo apt-get install sumo sumo-tools sumo-doc
