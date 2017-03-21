@@ -1,10 +1,10 @@
 # Junction Jam Installation Guide
-Junction Jam is essentially an interface built on top of the SUMO vehicle simulator.
+Junction Jam is essentially an interface built on top of the [SUMO](http://sumo.dlr.de/wiki) vehicle simulator.
 The installation process is somewhat technical but I will try to provide the steps here.
 
 ## Operating System
 The software is built to work on Ubuntu 16.04, if this is not your operating system
-then I suggest you make a virtual machine using VirtualBox + guest additions (EXTERNAL GUIDE).
+then I suggest you make a virtual machine using VirtualBox + guest additions ([EXTERNAL GUIDE](http://www.psychocats.net/ubuntu/virtualbox)).
 
 I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB video memory.
 
@@ -12,7 +12,7 @@ I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB vide
 The current version of SUMO is v0.29, however the GUI for this version is still buggy.
 SUMO v0.28 is what we use here. To install SUMO v0.28 open a terminal in Ubuntu and
 run the following commands. 
-```
+```sh
 sudo add-apt-repository ppa:sumo/stable
 sudo apt-get update
 sudo apt-get install sumo sumo-tools sumo-doc
