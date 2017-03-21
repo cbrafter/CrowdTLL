@@ -12,7 +12,7 @@ I recommend making a VM specified with at least 2 CPUs, 2 GB RAM, and 64 MB vide
 The current version of SUMO is v0.29, however the GUI for this version is still buggy.
 SUMO v0.28 is what we use here. To install SUMO v0.28 open a terminal in Ubuntu and
 run the following commands. 
-```{r, engine='bash', sum_install}
+```
 sudo add-apt-repository ppa:sumo/stable
 sudo apt-get update
 sudo apt-get install sumo sumo-tools sumo-doc
@@ -37,7 +37,7 @@ git clone https://github.com/ngcm/JunctionJam
 ```
 Run the following command to navigate to the Junction Jam software folder:
 ```
-cd JunctionJam/generalCodes
+cd JunctionJam/generalCode
 ```
 
 ## Running Junction Jam
@@ -55,7 +55,7 @@ python junctionJam.py
 5. Press 'Yes' to reset the game.
 6. Pressing no halts the game, you will have to close the window and restart.
 7. If the game seems a little slow, open the file `junctionJam/models/cross/gui-settins.cfg` and decrease the delay to 1
-if it is too slow then you may need a faster computer.
+   if it is too slow then you may need a faster computer.
 
 ## Problems
 If you have issues installing the software please feel free to contact me. My details are on my 
