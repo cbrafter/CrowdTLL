@@ -5,7 +5,7 @@ An open source traffic light control game for engagement events with potential f
 
 *Please acknowledge the author and other relevant contributors in any derivative works. Not for commercial use.*   
 *Copyright 2017: [Craig B. Rafter](https://github.com/cbrafter)*   
-*Distributed under GNU GPL-3.0*   
+*Distributed under [GNU GPL-3.0](./LICENSE)*   
 
 ## Description
 A simple crossroads simulated using the [TraCI](http://sumo.dlr.de/wiki/TraCI) [Python](https://www.python.org/) API to the [SUMO](http://www.sumo.dlr.de/) microsimulator. The program maps the keyboard arrow keys to control the direction of the traffic flow using the [Pynput](https://pypi.python.org/pypi/pynput) Python library. The *sumoAPI* included is from the [Traffic Control Test Set](http://tctester.sourceforge.net/).
