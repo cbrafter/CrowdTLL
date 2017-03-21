@@ -94,16 +94,15 @@ def parseTweets(api):
     """ Parse the twitter feed for results messages 
     """
     userName = api.VerifyCredentials().screen_name
-    timeline = api.GetUserTimeline(screen_name=userName, count=110)
+    timeline = api.GetUserTimeline(screen_name=userName, count=150)
     # Default data
-    results = {'UID': ['COMP', 'JIM', 'UOS'], 'TIME': [177.12, 250.0, 300.0]}
-    oneHourInSeconds = 3600
+    results = {'UID': ['COMP', 'JIM', 'BOB'], 'TIME': [177.12, 250.0, 300.0]}
+    timeCutoff = 3600  # 3600 = 1 hour in seconds
     validTweets = []
 
     # Get only tweets from the last hour or if the number of tweets is over 100
     for tweet in timeline:
-        if (secondsSinceTweet(tweet) < oneHourInSeconds and
-           len(validTweets) < 100):
+        if secondsSinceTweet(tweet) < timeCutoff:
             # Get only tweets from own account and if the message matches the
             # result string format
             if (tweet.user.screen_name == userName and
@@ -125,5 +124,9 @@ def parseTweets(api):
     # Pandas Stuff
     df = pd.DataFrame.from_dict(results)
     # Top 10 results, only best time for each ID counted
-    dfSort = df.groupby('UID').min().sort_values(by='TIME', ascending=True).head(10).reset_index()
+    dfSort = (df.groupby('UID')
+                .min()
+                .sort_values(by='TIME', ascending=True)
+                .head(10)
+                .reset_index())
     htmlTable(dfSort, './data/results.html')
