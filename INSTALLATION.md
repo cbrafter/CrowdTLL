@@ -33,7 +33,7 @@ sudo -H pip install pandas psutil pynput profanity python-twitter
 ## Getting Junction Jam
 Run the following command in your terminal while connected to the internet:
 ```
-git clone https://github.com/ngcm/JunctionJam
+git clone https://github.com/ngcm/JunctionJam.git
 ```
 Run the following command to navigate to the Junction Jam software folder:
 ```
