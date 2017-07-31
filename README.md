@@ -1,8 +1,6 @@
 # Junction Jam
 
-
 [![DOI](https://zenodo.org/badge/80619777.svg)](https://zenodo.org/badge/latestdoi/80619777)
-
 
 Jam at the junction - can you beat the queues and get the cars past the traffic lights faster than everyone else? Interactive traffic simulation for all ages.
 
