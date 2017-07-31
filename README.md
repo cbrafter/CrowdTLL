@@ -1,4 +1,9 @@
 # Junction Jam
+
+
+[![DOI](https://zenodo.org/badge/80619777.svg)](https://zenodo.org/badge/latestdoi/80619777)
+
+
 Jam at the junction - can you beat the queues and get the cars past the traffic lights faster than everyone else? Interactive traffic simulation for all ages.
 
 An open source traffic light control game for engagement events with potential for crowd sourcing data. See it in action on [YouTube](https://youtu.be/o_phwO31nIk)
