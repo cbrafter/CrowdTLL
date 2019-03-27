@@ -112,7 +112,7 @@ while True:
 
     # Clean up
     print("Disconnecting Keylogger")
-    keyLogger.stop()
+    # keyLogger.stop()
     print("Disconnecting from SUMO")
     connector.disconnect()
     print('Simulation Complete')
